@@ -1,0 +1,29 @@
+<div class="min-h-screen bg-black text-white p-8">
+
+  <div class="max-w-7xl mx-auto mb-12">
+    <h1 class="text-5xl font-bold text-center mb-4">
+      {{ title() }}
+    </h1>
+    <p class="text-center text-gray-400">
+      A collection of curated tracks for every mood
+    </p>
+  </div>
+
+  <app-search></app-search>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Playlist -->
+    <app-playlist
+      class="lg:col-span-2"
+      (trackSelected)="onTrackSelected($event)">
+    </app-playlist>
+
+    <!-- Player -->
+    <app-player
+      class="lg:col-span-1"
+      [currentTrack]="selectedTrack">
+    </app-player>
+
+  </div>
+</div>

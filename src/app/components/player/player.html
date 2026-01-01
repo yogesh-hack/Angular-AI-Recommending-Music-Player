@@ -1,0 +1,40 @@
+<div class="sticky top-30 rounded-lg p-6 border border-zinc-800">
+
+  <ng-container *ngIf="currentTrack; else empty">
+
+
+    <div class="bg-neutral-primary-soft block max-w-sm rounded-base shadow-xs">
+      <a href="#">
+        <img class="rounded-base" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+      </a>
+      <a href="#">
+        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">{{ currentTrack.title }}</h5>
+      </a>
+      <p class="mb-6 text-body">In today’s fast-paced</p>
+      <span
+        class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+        {{ currentTrack.artist }}
+      </span>
+
+
+      <input type="range" class="w-full accent-green-500" [max]="duration || 0" [value]="currentTime"
+        (input)="seek($event)" />
+
+      <div class="flex justify-between text-xs text-gray-400 mt-1">
+        <span>{{ formatTime(currentTime) }}</span>
+        <span>{{ formatTime(duration) }}</span>
+      </div>
+
+      <button (click)="togglePlay()" class="mt-4 w-full py-2 bg-green-500 rounded text-black font-semibold">
+        {{ isPlaying ? 'Pause' : 'Play' }}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="text-center text-gray-500 py-20">
+      Select a track to play
+    </div>
+  </ng-template>
+
+</div>
